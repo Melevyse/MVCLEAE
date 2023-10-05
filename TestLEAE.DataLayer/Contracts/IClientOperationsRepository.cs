@@ -7,7 +7,7 @@ public interface IClientOperationsRepository
 
     Task AddClientAsyncDb(
         string name,
-        string inn,
-        string type);
+        int inn,
+        ClientType type);
 }
 

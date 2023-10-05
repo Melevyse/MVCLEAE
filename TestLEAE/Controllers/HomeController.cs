@@ -51,7 +51,7 @@ public class HomeController : Controller
     // Add Client
     public async Task<IActionResult> AddClient(
         string name,
-        string inn,
+        int inn,
         string type)
     {
         return Ok();
@@ -60,7 +60,7 @@ public class HomeController : Controller
     // Add Founder for Client
     public async Task<IActionResult> AddFounder(
         string Name,
-        string Inn) 
+        int Inn) 
     {
         return Ok();
     }

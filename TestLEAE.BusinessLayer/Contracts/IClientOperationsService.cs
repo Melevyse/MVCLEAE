@@ -10,6 +10,6 @@ public interface IClientOperationsService
 
     Task AddClientAsync(
         string name,
-        string inn,
+        int inn,
         string type);
 }
