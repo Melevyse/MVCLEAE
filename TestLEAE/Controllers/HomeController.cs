@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
 using TestLEAE.BusinessLayer;
 
 namespace TestLEAE.Controllers;
@@ -29,12 +30,38 @@ public class HomeController : Controller
     // Get all Clients info
     public async Task<IActionResult> GetClients() 
     {
-        return Ok();
+        return View();
+    }
+
+    // Get Client info
+    public async Task<IActionResult> GetClient(
+        string clientName)
+    {
+       return View();
     }
 
     // Get all Founders of the selected Client
-    public async Task<IActionResult> GetFounder()
+    public async Task<IActionResult> GetFounder(
+        string clientName,
+        string clientType)
     {
         return View();
+    }
+
+    // Add Client
+    public async Task<IActionResult> AddClient(
+        string name,
+        string inn,
+        string type)
+    {
+        return Ok();
+    }
+
+    // Add Founder for Client
+    public async Task<IActionResult> AddFounder(
+        string Name,
+        string Inn) 
+    {
+        return Ok();
     }
 }

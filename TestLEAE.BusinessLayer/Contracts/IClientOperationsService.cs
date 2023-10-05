@@ -1,6 +1,15 @@
-﻿namespace TestLEAE.BusinessLayer;
+﻿using TestLEAE.DataLayer;
+
+namespace TestLEAE.BusinessLayer;
 
 public interface IClientOperationsService
 {
-    
+    Task<List<Client>> GetClientsList();
+    Task<Client> GetClientByName(
+        string name);
+
+    Task AddClientAsync(
+        string name,
+        string inn,
+        string type);
 }
