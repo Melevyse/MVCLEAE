@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using TestLEAE.BusinessLayer;
+using TestLEAE.DataLayer;
 
 namespace TestLEAE.Controllers;
 
@@ -23,21 +25,22 @@ public class HomeController : Controller
     // Default page
     public async Task<IActionResult> Index() 
     {
-        
         return View();
     }
 
     // Get all Clients info
     public async Task<IActionResult> GetClients() 
     {
-        return View();
+        var model = await _clientOperationsService.GetClientsList();
+        return View(model);
     }
 
     // Get Client info
     public async Task<IActionResult> GetClient(
         string clientName)
     {
-       return View();
+       var model = await _clientOperationsService.GetClientByName(clientName);
+       return View(model);
     }
 
     // Get all Founders of the selected Client
@@ -45,7 +48,8 @@ public class HomeController : Controller
         string clientName,
         string clientType)
     {
-        return View();
+        var model = await _founderOperationsService.GetFounderListByClientName(clientName);
+        return View(model);
     }
 
     // Add Client
@@ -54,6 +58,7 @@ public class HomeController : Controller
         int inn,
         string type)
     {
+        await _clientOperationsService.AddClientAsync(name, inn, type);
         return Ok();
     }
 
@@ -63,6 +68,7 @@ public class HomeController : Controller
         string fio,
         int inn) 
     {
+        await _founderOperationsService.AddFounderAsync(name, fio, inn);
         return Ok();
     }
 }
