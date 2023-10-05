@@ -8,6 +8,7 @@ public interface IFounderOperationsService
         string clientName);
 
     Task AddFounderAsync(
+        string clientName,
         string name,
         int inn);
 }

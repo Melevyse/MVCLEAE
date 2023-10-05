@@ -59,8 +59,9 @@ public class HomeController : Controller
 
     // Add Founder for Client
     public async Task<IActionResult> AddFounder(
-        string Name,
-        int Inn) 
+        string name,
+        string fio,
+        int inn) 
     {
         return Ok();
     }

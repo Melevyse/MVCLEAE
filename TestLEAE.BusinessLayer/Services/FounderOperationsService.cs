@@ -13,7 +13,7 @@ public class FounderOperationsService : IFounderOperationsService
         _founderOperationsRepository = founderOperationsRepository;
     }
 
-    public async Task AddFounderAsync(string name, int inn)
+    public async Task AddFounderAsync(string clientName, string name, int inn)
     {
         await _founderOperationsRepository.AddFounderAsyncDb(name, inn);
     }

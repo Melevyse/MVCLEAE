@@ -5,6 +5,7 @@ public interface IFounderOperationsRepository
         string clientName);
 
     Task AddFounderAsyncDb(
+        string clientName,
         string name,
         int Inn);
 }

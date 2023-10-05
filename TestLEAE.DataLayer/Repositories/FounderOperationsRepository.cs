@@ -39,18 +39,30 @@ public class FounderOperationsRepository : IFounderOperationsRepository
     }
 
     public async Task AddFounderAsyncDb(
+        string clientName,
         string name,
         int inn)
     {
-        var founders = new Founder()
+        var client = await _context.Clients
+        .AsNoTracking()
+        .FirstOrDefaultAsync(x => x.Name == clientName);
+        if (client != null)
         {
-            Fio = name,
-            Inn = inn,
-            DateToAdd = DateTime.Today,
-            DateToUpdate = DateTime.Today
-        };
-        await _context.Founders.AddAsync(founders);
-        await _context.SaveChangesAsync(); 
+            var founders = new Founder()
+            {
+                IdClient = client.Id,
+                Fio = name,
+                Inn = inn,
+                DateToAdd = DateTime.Today,
+                DateToUpdate = DateTime.Today
+            };
+            await _context.Founders.AddAsync(founders);
+            await _context.SaveChangesAsync();
+        }
+        else
+        {
+            throw new ArgumentException("No client found in the database..");
+        }
     }
 }
 
