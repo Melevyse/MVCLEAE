@@ -11,5 +11,7 @@ public class ClientOperationsService : IClientOperationsService
     {
         _clientOperationsRepository = clientOperationsRepository;
     }
+
+    public Get
 }
 

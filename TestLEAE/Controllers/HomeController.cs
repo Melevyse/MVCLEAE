@@ -19,16 +19,20 @@ public class HomeController : Controller
         _founderOperationsService = founderOperationsService;
     }
 
+    // Default page
     public async Task<IActionResult> Index() 
     {
+        
         return View();
     }
 
+    // Get all Clients info
     public async Task<IActionResult> GetClients() 
     {
         return Ok();
     }
 
+    // Get all Founders of the selected Client
     public async Task<IActionResult> GetFounder()
     {
         return View();
