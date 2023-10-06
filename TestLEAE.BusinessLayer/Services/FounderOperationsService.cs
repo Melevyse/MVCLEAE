@@ -13,14 +13,18 @@ public class FounderOperationsService : IFounderOperationsService
         _founderOperationsRepository = founderOperationsRepository;
     }
 
-    public async Task AddFounderAsync(string clientName, string name, int inn)
+    public async Task AddFounderAsync(
+        long clientInn,
+        string fio, 
+        long inn)
     {
-        await _founderOperationsRepository.AddFounderAsyncDb(name, inn);
+        await _founderOperationsRepository.AddFounderAsyncDb(clientInn, fio, inn);
     }
 
-    public async Task<List<Founder>> GetFounderListByClientName(string clientName)
+    public async Task<List<Founder>> GetFounderListByClientInn(
+        long clientInn)
     {
-        var result = await _founderOperationsRepository.GetFounderListByClientNameDb(clientName);
+        var result = await _founderOperationsRepository.GetFounderListByClientInnDb(clientInn);
         return result;
     }
 }

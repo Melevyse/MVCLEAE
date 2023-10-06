@@ -22,4 +22,11 @@ public class SqlReportingContext : DbContext
     {
 
     }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.Entity<Client>()
+            .HasIndex(c => new { c.Name, c.Inn })
+            .IsUnique();
+    }
 }

@@ -7,7 +7,7 @@ public class Client
 {
     [Key]
     public Guid Id { get; set; }
-    public int Inn { get; set; }
+    public long Inn { get; set; }
     public string? Name { get; set; }
     [EnumDataType(typeof(ClientType))]
     public ClientType Type { get; set; }

@@ -2,12 +2,12 @@
 public interface IClientOperationsRepository
 {
     Task<List<Client>> GetAllClientsDb();
-    Task<Client> GetClientByNameDb(
-        string name);
+    Task<Client> GetClientByInnDb(
+        long inn);
 
     Task AddClientAsyncDb(
         string name,
-        int inn,
+        long inn,
         ClientType type);
 }
 

@@ -25,16 +25,17 @@ public class ClientOperationsRepository : IClientOperationsRepository
 
         return clients;
     }
-    public async Task<Client> GetClientByNameDb(
-        string name)
+    public async Task<Client> GetClientByInnDb(
+        long inn)
     {
-        var client = await _context.Clients.FirstOrDefaultAsync(x => x.Name == name);
+        var client = await _context.Clients.FirstOrDefaultAsync(x => x.Inn == inn);
         return client ?? throw new ArgumentException("No client found in the database.");
     }
 
 
-    public async Task AddClientAsyncDb(string name, 
-        int inn, 
+    public async Task AddClientAsyncDb(
+        string name, 
+        long inn, 
         ClientType type)
     {
         var client = new Client()

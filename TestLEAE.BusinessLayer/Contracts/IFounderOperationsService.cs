@@ -4,12 +4,12 @@ namespace TestLEAE.BusinessLayer;
 
 public interface IFounderOperationsService
 {
-    Task<List<Founder>> GetFounderListByClientName(
-        string clientName);
+    Task<List<Founder>> GetFounderListByClientInn(
+        long inn);
 
     Task AddFounderAsync(
-        string clientName,
-        string name,
-        int inn);
+        long clientInn,
+        string fio,
+        long inn);
 }
 

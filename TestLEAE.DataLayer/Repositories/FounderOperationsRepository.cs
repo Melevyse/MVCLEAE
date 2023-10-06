@@ -16,13 +16,13 @@ public class FounderOperationsRepository : IFounderOperationsRepository
         _logger = logger;
     }
 
-    public async Task<List<Founder>> GetFounderListByClientNameDb(
-        string clientName)
+    public async Task<List<Founder>> GetFounderListByClientInnDb(
+        long clientInn)
     {
         var client = await _context.Clients
         .AsNoTracking()
-        .FirstOrDefaultAsync(x => x.Name == clientName);
-        List<Founder> founders = new List<Founder>();
+        .FirstOrDefaultAsync(x => x.Inn == clientInn);
+        var founders = new List<Founder>();
         if (client != null)
         {
             founders = await _context.Founders
@@ -39,19 +39,19 @@ public class FounderOperationsRepository : IFounderOperationsRepository
     }
 
     public async Task AddFounderAsyncDb(
-        string clientName,
-        string name,
-        int inn)
+        long clientInn,
+        string fio,
+        long inn)
     {
         var client = await _context.Clients
         .AsNoTracking()
-        .FirstOrDefaultAsync(x => x.Name == clientName);
+        .FirstOrDefaultAsync(x => x.Inn == clientInn);
         if (client != null)
         {
             var founders = new Founder()
             {
                 IdClient = client.Id,
-                Fio = name,
+                Fio = fio,
                 Inn = inn,
                 DateToAdd = DateTime.Today,
                 DateToUpdate = DateTime.Today

@@ -37,26 +37,25 @@ public class HomeController : Controller
 
     // Get Client info
     public async Task<IActionResult> GetClient(
-        string clientName)
+        long inn)
     {
-       var model = await _clientOperationsService.GetClientByName(clientName);
+        var model = await _clientOperationsService.GetClientByInn(inn);
        return View(model);
     }
 
     // Get all Founders of the selected Client
     public async Task<IActionResult> GetFounder(
-        string clientName,
-        string clientType)
+        long clientInn)
     {
-        var model = await _founderOperationsService.GetFounderListByClientName(clientName);
+        var model = await _founderOperationsService.GetFounderListByClientInn(clientInn);
         return View(model);
     }
 
     // Add Client
     public async Task<IActionResult> AddClient(
         string name,
-        int inn,
-        string type)
+        long inn,
+        ClientType type)
     {
         await _clientOperationsService.AddClientAsync(name, inn, type);
         return Ok();
@@ -64,11 +63,11 @@ public class HomeController : Controller
 
     // Add Founder for Client
     public async Task<IActionResult> AddFounder(
-        string name,
+        long clientInn,
         string fio,
-        int inn) 
+        long inn) 
     {
-        await _founderOperationsService.AddFounderAsync(name, fio, inn);
+        await _founderOperationsService.AddFounderAsync(clientInn, fio, inn);
         return Ok();
     }
 }

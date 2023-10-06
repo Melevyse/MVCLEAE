@@ -12,20 +12,17 @@ public class ClientOperationsService : IClientOperationsService
         _clientOperationsRepository = clientOperationsRepository;
     }
 
-    public async Task AddClientAsync(string name, int inn, string type)
+    public async Task AddClientAsync(
+        string name, 
+        long inn, 
+        ClientType type)
     {
-        if (Enum.TryParse<ClientType>(type, out var clientType))
-        {
-            await _clientOperationsRepository.AddClientAsyncDb(name, inn, clientType);
-        }
-        else
-        {
-            throw new ArgumentException("Invalid ClientType value.");
-        }
+        await _clientOperationsRepository.AddClientAsyncDb(name, inn, type);
     }
-    public async Task<Client> GetClientByName(string name)
+    public async Task<Client> GetClientByInn(
+        long inn)
     {
-        var result = await _clientOperationsRepository.GetClientByNameDb(name);
+        var result = await _clientOperationsRepository.GetClientByInnDb(inn);
         return result;
     }
 

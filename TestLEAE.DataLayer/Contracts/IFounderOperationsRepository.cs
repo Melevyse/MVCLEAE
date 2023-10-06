@@ -1,12 +1,12 @@
 ﻿namespace TestLEAE.DataLayer;
 public interface IFounderOperationsRepository
 {
-    Task<List<Founder>> GetFounderListByClientNameDb(
-        string clientName);
+    Task<List<Founder>> GetFounderListByClientInnDb(
+        long inn);
 
     Task AddFounderAsyncDb(
-        string clientName,
-        string name,
-        int Inn);
+        long clientInn,
+        string fio,
+        long Inn);
 }
 

@@ -5,11 +5,11 @@ namespace TestLEAE.BusinessLayer;
 public interface IClientOperationsService
 {
     Task<List<Client>> GetClientsList();
-    Task<Client> GetClientByName(
-        string name);
+    Task<Client> GetClientByInn(
+        long inn);
 
     Task AddClientAsync(
         string name,
-        int inn,
-        string type);
+        long inn,
+        ClientType type);
 }

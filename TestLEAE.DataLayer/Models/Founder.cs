@@ -9,7 +9,7 @@ public class Founder
     public Guid Id { get; set; }
     [ForeignKey("Client")]
     public Guid IdClient { get; set; }
-    public int Inn { get; set; }
+    public long Inn { get; set; }
     public string? Fio { get; set; }
     public DateTime DateToAdd { get; set;}
     public DateTime DateToUpdate { get; set;}
