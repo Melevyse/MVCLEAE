@@ -4,7 +4,8 @@ namespace TestLEAE.BusinessLayer;
 
 public interface IClientOperationsService
 {
-    Task<List<Client>> GetClientsList();
+    Task<List<Client>> GetClientsListByType(
+        ClientType type);
     Task<Client> GetClientByInn(
         long inn);
 

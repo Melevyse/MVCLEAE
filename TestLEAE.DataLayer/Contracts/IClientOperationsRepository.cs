@@ -1,7 +1,8 @@
 ﻿namespace TestLEAE.DataLayer;
 public interface IClientOperationsRepository
 {
-    Task<List<Client>> GetAllClientsDb();
+    Task<List<Client>> GetAllClientsByTypeDb(
+        ClientType type);
     Task<Client> GetClientByInnDb(
         long inn);
 

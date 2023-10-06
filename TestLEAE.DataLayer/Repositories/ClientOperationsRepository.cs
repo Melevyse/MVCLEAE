@@ -16,9 +16,13 @@ public class ClientOperationsRepository : IClientOperationsRepository
         _logger = logger;
     }
 
-    public async Task<List<Client>> GetAllClientsDb() 
+    public async Task<List<Client>> GetAllClientsByTypeDb(
+        ClientType type) 
     {
-        var clients = await _context.Clients.ToListAsync();
+        var clients = await _context.Clients
+            .AsNoTracking()
+            .Where(x => x.Type == type)
+            .ToListAsync();
 
         if (clients == null || clients.Count == 0)
             throw new ArgumentException("No clients found in the database.");

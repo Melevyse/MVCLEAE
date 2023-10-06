@@ -26,9 +26,10 @@ public class ClientOperationsService : IClientOperationsService
         return result;
     }
 
-    public async Task<List<Client>> GetClientsList()
+    public async Task<List<Client>> GetClientsListByType(
+        ClientType type)
     {
-        var result = await _clientOperationsRepository.GetAllClientsDb();
+        var result = await _clientOperationsRepository.GetAllClientsByTypeDb(type);
         return result;
     }
 }

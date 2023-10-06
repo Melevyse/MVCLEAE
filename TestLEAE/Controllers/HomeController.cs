@@ -29,9 +29,11 @@ public class HomeController : Controller
     }
 
     // Get all Clients info
-    public async Task<IActionResult> GetClients() 
+    public async Task<IActionResult> GetClients(
+        ClientType type) 
     {
-        var model = await _clientOperationsService.GetClientsList();
+        var model = await _clientOperationsService
+            .GetClientsListByType(type);
         return View(model);
     }
 
@@ -39,7 +41,8 @@ public class HomeController : Controller
     public async Task<IActionResult> GetClient(
         long inn)
     {
-        var model = await _clientOperationsService.GetClientByInn(inn);
+        var model = await _clientOperationsService
+            .GetClientByInn(inn);
        return View(model);
     }
 
@@ -47,7 +50,8 @@ public class HomeController : Controller
     public async Task<IActionResult> GetFounder(
         long clientInn)
     {
-        var model = await _founderOperationsService.GetFounderListByClientInn(clientInn);
+        var model = await _founderOperationsService
+            .GetFounderListByClientInn(clientInn);
         return View(model);
     }
 
@@ -57,7 +61,8 @@ public class HomeController : Controller
         long inn,
         ClientType type)
     {
-        await _clientOperationsService.AddClientAsync(name, inn, type);
+        await _clientOperationsService
+            .AddClientAsync(name, inn, type);
         return Ok();
     }
 
@@ -67,7 +72,8 @@ public class HomeController : Controller
         string fio,
         long inn) 
     {
-        await _founderOperationsService.AddFounderAsync(clientInn, fio, inn);
+        await _founderOperationsService
+            .AddFounderAsync(clientInn, fio, inn);
         return Ok();
     }
 }
