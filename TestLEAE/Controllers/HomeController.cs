@@ -6,7 +6,6 @@ using TestLEAE.DataLayer;
 
 namespace TestLEAE.Controllers;
 
-[Route("api/[controller]")]
 public class HomeController : Controller
 {
     private readonly ILogger<HomeController> _logger;

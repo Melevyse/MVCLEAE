@@ -20,6 +20,8 @@ namespace TestLEAE
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddScoped<IClientOperationsService, ClientOperationsService>();
             services.AddScoped<IFounderOperationsService, FounderOperationsService>();
+            services.AddScoped<IClientOperationsRepository, ClientOperationsRepository>();
+            services.AddScoped<IFounderOperationsRepository, FounderOperationsRepository>();
             services.AddMvc();
             services.AddControllersWithViews();
         }
