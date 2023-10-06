@@ -11,7 +11,6 @@ public class Founder
     public string? Fio { get; set; }
     public DateTime DateToAdd { get; set;}
     public DateTime DateToUpdate { get; set;}
-
     public Guid IdClient { get; set; }
     public Client? Client { get; set; }
 }
