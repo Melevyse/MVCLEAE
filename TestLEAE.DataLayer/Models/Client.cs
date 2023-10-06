@@ -13,5 +13,6 @@ public class Client
     public ClientType Type { get; set; }
     public DateTime DateToAdd { get; set; }
     public DateTime DateToUpdate { get; set; }
+    public List<Founder> Founders { get; set; } = new();
 }
 

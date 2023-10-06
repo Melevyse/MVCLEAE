@@ -10,4 +10,9 @@
     <ProjectReference Include="..\TestLEAE.BusinessLayer\TestLEAE.BusinessLayer.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\css\" />
+    <Folder Include="wwwroot\js\" />
+  </ItemGroup>
+
 </Project>

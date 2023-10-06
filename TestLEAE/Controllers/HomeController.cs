@@ -28,7 +28,7 @@ public class HomeController : Controller
         return View();
     }
 
-    // Get all Clients info
+    // Get all Clients info by type
     public async Task<IActionResult> GetClients(
         ClientType type) 
     {
