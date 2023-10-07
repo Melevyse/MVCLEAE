@@ -26,9 +26,9 @@ public class ClientOperationsService : IClientOperationsService
     public async Task AddClientAsync(
         Client client)
     {
-        await _validator.ValidateAndThrowAsync(client);
         client.DateToAdd = DateTime.Today;
         client.DateToUpdate = DateTime.Today;
+        await _validator.ValidateAndThrowAsync(client);
         await _clientOperationsRepository.AddClientAsyncDb(client);
     }
     public async Task<Client> GetClientByInn(

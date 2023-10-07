@@ -28,10 +28,10 @@ public class FounderOperationsService : IFounderOperationsService
         Founder founder,
         long innClient)
     {
-        await _validator.ValidateAndThrowAsync(founder);
-        _validationPrimitivesService.BeValidInn(innClient);
         founder.DateToAdd = DateTime.Today;
         founder.DateToUpdate = DateTime.Today;
+        await _validator.ValidateAndThrowAsync(founder);
+        _validationPrimitivesService.BeValidInn(innClient);
         await _founderOperationsRepository.AddFounderAsyncDb(founder, innClient);
     }
 
