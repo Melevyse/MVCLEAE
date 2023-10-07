@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf8" />
@@ -8,17 +9,17 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand" href="Index.cshtml">Тестовое задание «Теледок»</a>
+            <a class="navbar-brand" asp-action="Index" asp-controller="Home">Тестовое задание «Теледок»</a>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="InformationList.cshtml" id="findClientLink">Просмотр клиентов</a>
+                        <a class="nav-link" asp-action="ClientSearch" asp-controller="Home" id="findClientLink">Просмотр клиентов</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="AddClient.cshtml" id="addClientLink">Добавить клиента</a>
+                        <a class="nav-link" asp-action="CreateClient" asp-controller="Home" id="addClientLink">Добавить клиента</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="AddFounder.cshtml" id="addFounderLink">Добавить клиента</a>
+                        <a class="nav-link" asp-action="CreateFounder" asp-controller="Home" id="addFounderLink">Добавить учредителя</a>
                     </li>
                 </ul>
             </div>

@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Content{
+    @using TestLEAE.DataLayer;
+    @model TestLEAE.ModelsView.ClientView
+
+    <p1>Найти клиента</p1>
+
+    <form method="get" asp-action="GetClientByType" asp-controller="Home">
+        <label for="clientType">Найти по типу:</label>
+        <select asp-for="type" id="clientType" name="type">
+            <option value="@ClientType.LegalEntities">Юридическое лицо</option>
+            <option value="@ClientType.IndividualEntrepreneurs">Индивидуальный предприниматель</option>
+        </select>
+        <button type="submit" id="getClientsButton">Найти клиента</button>
+    </form>
+
+    <form method="get" asp-action="GetClient" asp-controller="Home">
+        <label for="clientType">Найти по типу:</label>
+        <select asp-for="type" id="clientType" name="type">
+            <option value="@ClientType.LegalEntities">Юридическое лицо</option>
+            <option value="@ClientType.IndividualEntrepreneurs">Индивидуальный предприниматель</option>
+        </select>
+        <button type="submit" id="getClientsButton">Найти клиента</button>
+    </form>
+}

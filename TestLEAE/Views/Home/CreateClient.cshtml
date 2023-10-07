@@ -4,11 +4,12 @@
 
 
 @section Content {
+    @using TestLEAE.DataLayer;
     @model TestLEAE.ModelsView.ClientView
 
-    <p>Добавить нового пользователя</p>
+    <p1>Добавить нового клиента</p1>
 
-    <form method="post" action="@Url.Action("AddClient", "HomeController")">
+    <form method="post" asp-action="CreateClient" asp-controller="Home">
 
         <label for="name">Имя:</label>
         <input asp-for="name" type="text" id="name" name="name" />
@@ -18,8 +19,8 @@
 
         <label for="clientType">Тип клиента:</label>
         <select asp-for="type" id="clientType" name="type">
-            <option value="LegalEntities">Юридическое лицо</option>
-            <option value="IndividualEntrepreneurs">Индивидуальный предприниматель</option>
+            <option value="@ClientType.LegalEntities">Юридическое лицо</option>
+            <option value="@ClientType.IndividualEntrepreneurs">Индивидуальный предприниматель</option>
         </select>
 
         <button type="submit" id="postClientsButton">Добавить клиента</button>
