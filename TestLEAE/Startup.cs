@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using TestLEAE.BusinessLayer;
@@ -23,6 +24,13 @@ namespace TestLEAE
             services.AddScoped<IFounderOperationsService, FounderOperationsService>();
             services.AddScoped<IClientOperationsRepository, ClientOperationsRepository>();
             services.AddScoped<IFounderOperationsRepository, FounderOperationsRepository>();
+
+            services.AddTransient<IValidationPrimitivesService, ValidationPrimitivesService>();
+            services.AddTransient<IValidator<Client>, ClientItemValidator>();
+            services.AddTransient<IValidator<Founder>, FounderItemValidator>();
+
+            services.AddValidatorsFromAssemblyContaining<Startup>();
+
             services.AddLogging((builder => builder.AddConsole()));
             services.AddMvc();
             services.AddControllersWithViews();
