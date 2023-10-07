@@ -1,8 +1,9 @@
-﻿using TestLEAE.DataLayer;
+﻿using TestLEAE.BusinessLayer.AutoMapper;
+using TestLEAE.DataLayer;
 
 namespace TestLEAE.ModelsView
 {
-    public class ClientView
+    public class ClientView : IMapWith<Client>
     {
         public long Inn { get; set; }
         public string Name { get; set; }

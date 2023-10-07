@@ -14,15 +14,12 @@
             <option value="@ClientType.LegalEntities">Юридическое лицо</option>
             <option value="@ClientType.IndividualEntrepreneurs">Индивидуальный предприниматель</option>
         </select>
-        <button type="submit" id="getClientsButton">Найти клиента</button>
+        <button type="submit" id="getClientsByTypeButton">Найти клиента</button>
     </form>
 
     <form method="get" asp-action="GetClient" asp-controller="Home">
-        <label for="clientType">Найти по типу:</label>
-        <select asp-for="type" id="clientType" name="type">
-            <option value="@ClientType.LegalEntities">Юридическое лицо</option>
-            <option value="@ClientType.IndividualEntrepreneurs">Индивидуальный предприниматель</option>
-        </select>
-        <button type="submit" id="getClientsButton">Найти клиента</button>
+        <label for="clientInn">Найти по типу:</label>
+        <input asp-for="inn" type="text" id="clientInn" name="inn" />
+        <button type="submit" id="getClientButton">Найти клиента</button>
     </form>
 }

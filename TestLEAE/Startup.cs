@@ -4,6 +4,7 @@ using System;
 using TestLEAE.BusinessLayer;
 using TestLEAE.DataLayer;
 
+
 namespace TestLEAE
 {
     public class Startup
@@ -22,13 +23,16 @@ namespace TestLEAE
             services.AddScoped<IFounderOperationsService, FounderOperationsService>();
             services.AddScoped<IClientOperationsRepository, ClientOperationsRepository>();
             services.AddScoped<IFounderOperationsRepository, FounderOperationsRepository>();
+            services.AddLogging((builder => builder.AddConsole()));
             services.AddMvc();
             services.AddControllersWithViews();
+            services.AddAutoMapper(typeof(Startup));
         }
 
         public void Configure(
-            IApplicationBuilder app, 
-            IWebHostEnvironment env) 
+            IApplicationBuilder app,
+            IWebHostEnvironment env,
+            ILogger<Startup> logger) 
         {
             if (env.IsDevelopment())
             {
