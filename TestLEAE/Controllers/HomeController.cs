@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http.HttpResults;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using TestLEAE.BusinessLayer;
@@ -12,14 +13,17 @@ public class HomeController : Controller
     private readonly ILogger<HomeController> _logger;
     private readonly IClientOperationsService _clientOperationsService;
     private readonly IFounderOperationsService _founderOperationsService;
+    private readonly IMapper _mapper;
     public HomeController(
         ILogger<HomeController> logger,
         IClientOperationsService clientOperationsService,
-        IFounderOperationsService founderOperationsService)
+        IFounderOperationsService founderOperationsService,
+        IMapper mapper)
     {
         _logger = logger;
         _clientOperationsService = clientOperationsService;
         _founderOperationsService = founderOperationsService;
+        _mapper = mapper;
     }
 
     [HttpGet]
@@ -75,8 +79,9 @@ public class HomeController : Controller
     public async Task<IActionResult> CreateClient(
         ClientView clientView)
     {
+        var mappingResource = _mapper.Map<Client>(clientView);
         await _clientOperationsService
-            .AddClientAsync(clientView.Name, clientView.Inn, clientView.Type);
+            .AddClientAsync(mappingResource);
         return RedirectToAction("CreateClient");
     }
 
@@ -87,12 +92,11 @@ public class HomeController : Controller
     // Add Founder for Client
     [HttpPost]
     public async Task<IActionResult> CreateFounder(
-        long clientInn,
-        string fio,
-        long inn) 
+        FounderView founderView) 
     {
+        var mappingResource = _mapper.Map<Founder>(founderView);
         await _founderOperationsService
-            .AddFounderAsync(clientInn, fio, inn);
+            .AddFounderAsync(mappingResource, founderView.InnClient);
         return RedirectToAction("CreateFounder");
     }
 }

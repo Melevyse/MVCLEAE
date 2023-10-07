@@ -38,19 +38,8 @@ public class ClientOperationsRepository : IClientOperationsRepository
 
 
     public async Task AddClientAsyncDb(
-        string name, 
-        long inn, 
-        ClientType type)
+        Client client)
     {
-        var client = new Client()
-        {
-            Name = name,
-            Inn = inn,
-            Type = type,
-            DateToAdd = DateTime.Today,
-            DateToUpdate = DateTime.Today
-        };
-
         await _context.Clients.AddAsync(client);
         await _context.SaveChangesAsync();
     }

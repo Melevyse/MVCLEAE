@@ -39,24 +39,17 @@ public class FounderOperationsRepository : IFounderOperationsRepository
     }
 
     public async Task AddFounderAsyncDb(
-        long clientInn,
-        string fio,
-        long inn)
+        Founder founder,
+        long innClient)
     {
         var client = await _context.Clients
         .AsNoTracking()
-        .FirstOrDefaultAsync(x => x.Inn == clientInn);
+        .FirstOrDefaultAsync(x => x.Inn == innClient);
         if (client != null)
         {
-            var founders = new Founder()
-            {
-                IdClient = client.Id,
-                Fio = fio,
-                Inn = inn,
-                DateToAdd = DateTime.Today,
-                DateToUpdate = DateTime.Today
-            };
-            await _context.Founders.AddAsync(founders);
+            founder.IdClient = client.Id;
+            founder.Client = client;
+            await _context.Founders.AddAsync(founder);
             await _context.SaveChangesAsync();
         }
         else

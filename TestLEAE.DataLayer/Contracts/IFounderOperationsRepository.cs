@@ -5,8 +5,7 @@ public interface IFounderOperationsRepository
         long inn);
 
     Task AddFounderAsyncDb(
-        long clientInn,
-        string fio,
-        long Inn);
+        Founder founder,
+        long innClient);
 }
 

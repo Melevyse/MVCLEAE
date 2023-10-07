@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using TestLEAE.DataLayer;
 
 namespace TestLEAE.BusinessLayer;
@@ -8,24 +7,21 @@ public class ClientOperationsService : IClientOperationsService
 {
     private readonly IClientOperationsRepository _clientOperationsRepository;
     private readonly ILogger<ClientOperationsService> _logger;
-    private readonly IMapper _mapper;
 
     public ClientOperationsService(
         IClientOperationsRepository clientOperationsRepository,
-        ILogger<ClientOperationsService> logger,
-        IMapper mapper)
+        ILogger<ClientOperationsService> logger)
     {
         _clientOperationsRepository = clientOperationsRepository;
         _logger = logger;
-        _mapper = mapper;
     }
 
     public async Task AddClientAsync(
-        string name, 
-        long inn, 
-        ClientType type)
+        Client client)
     {
-        await _clientOperationsRepository.AddClientAsyncDb(name, inn, type);
+        client.DateToAdd = DateTime.Today;
+        client.DateToUpdate = DateTime.Today;
+        await _clientOperationsRepository.AddClientAsyncDb(client);
     }
     public async Task<Client> GetClientByInn(
         long inn)

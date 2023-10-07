@@ -10,7 +10,5 @@ public interface IClientOperationsService
         long inn);
 
     Task AddClientAsync(
-        string name,
-        long inn,
-        ClientType type);
+        Client client);
 }

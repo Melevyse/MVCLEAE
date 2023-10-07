@@ -8,8 +8,7 @@ public interface IFounderOperationsService
         long inn);
 
     Task AddFounderAsync(
-        long clientInn,
-        string fio,
-        long inn);
+        Founder founder,
+        long  innClient);
 }
 
