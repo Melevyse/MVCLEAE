@@ -33,14 +33,20 @@ public class HomeController : Controller
         return View();
     }
 
-    [HttpGet]
+    [HttpGet("ClientSearch")]
     public IActionResult ClientSearch()
     {
         return View();
     }
 
+    [HttpGet("GetClientByType")]
+    public IActionResult GetClientByType()
+    {
+        return View();
+    }
+
     // Get all Clients info by type
-    [HttpGet]
+    [HttpGet("GetClientByType/{type}")]
     public async Task<IActionResult> GetClientByType(
         ClientType type)
     {
@@ -51,8 +57,8 @@ public class HomeController : Controller
     }
 
     // Get Client info
-    [HttpGet]
-    public async Task<IActionResult> GetClient(
+    [HttpGet("GetClientByInn/{inn}")]
+    public async Task<IActionResult> GetClientByInn(
         long inn)
     {
         var model = await _clientOperationsService

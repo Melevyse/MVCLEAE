@@ -7,7 +7,8 @@
     @using TestLEAE.ModelsView;
     @model IEnumerable<ClientView>
 <p>Просмотр клиентов</p>
-
+    @if (Model != null)
+    {
     <ul class="card-body">
         @foreach (ClientView client in @Model)
         {

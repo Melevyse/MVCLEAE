@@ -5,7 +5,6 @@ using System;
 using TestLEAE.BusinessLayer;
 using TestLEAE.DataLayer;
 
-
 namespace TestLEAE
 {
     public class Startup
@@ -54,6 +53,7 @@ namespace TestLEAE
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
+            app.UseMiddleware<ExceptionHandlingMiddleware>();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(
