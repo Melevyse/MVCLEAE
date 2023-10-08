@@ -9,21 +9,19 @@
 
     <p1>Добавить нового клиента</p1>
 
-    <form method="post" asp-action="CreateClient" asp-controller="Home">
+    <form method="post" action="@Url.Action("CreateClient", "Home")">
+            <label for="name">Имя:</label>
+            <input type="text" id="name" name="name" />
 
-        <label for="name">Имя:</label>
-        <input asp-for="name" type="text" id="name" name="name" />
+            <label for="inn">ИНН:</label>
+            <input type="text" id="inn" name="inn" />
 
-        <label for="inn">ИНН:</label>
-        <input asp-for="inn" type="text" id="inn" name="inn" />
-
-        <label for="clientType">Тип клиента:</label>
-        <select asp-for="type" id="clientType" name="type">
-            <option value="@ClientType.LegalEntities">Юридическое лицо</option>
-            <option value="@ClientType.IndividualEntrepreneurs">Индивидуальный предприниматель</option>
-        </select>
-
-        <button type="submit" id="postClientsButton">Добавить клиента</button>
+            <label for="clientType">Тип клиента:</label>
+            <select id="clientType" name="type">
+                <option value="@ClientType.LegalEntities">Юридическое лицо</option>
+                <option value="@ClientType.IndividualEntrepreneurs">Индивидуальный предприниматель</option>
+            </select>
+        <button type="submit" id="postClientsButton">Добавить</button>
     </form>
 }
 

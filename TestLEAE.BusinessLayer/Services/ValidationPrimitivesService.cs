@@ -23,7 +23,7 @@ public class ValidationPrimitivesService : IValidationPrimitivesService
 
     public void BeValidDateTime(DateTime date)
     {
-        if (date > DateTime.Now)
+        if (date > DateTime.Today)
             throw new ArgumentException("Invalid DateTime");
     }
 

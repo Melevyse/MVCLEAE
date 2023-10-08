@@ -25,10 +25,10 @@ public class ClientItemValidator : AbstractValidator<Client>
 
         RuleFor(client => client.DateToAdd)
             .NotEmpty()
-            .LessThanOrEqualTo(DateTime.Now);
+            .LessThanOrEqualTo(DateTime.Today);
 
         RuleFor(client => client.DateToUpdate)
             .NotEmpty()
-            .LessThanOrEqualTo(DateTime.Now);
+            .LessThanOrEqualTo(DateTime.Today);
     }
 }

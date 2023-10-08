@@ -9,18 +9,18 @@
 
     <p1>Найти клиента</p1>
 
-    <form method="get" asp-action="GetClientByType" asp-controller="Home">
+    <form method="get" action="@Url.Action("GetClientByType", "Home")">
         <label for="clientType">Найти по типу:</label>
-        <select asp-for="type" id="clientType" name="type">
+        <select id="clientType" name="type">
             <option value="@ClientType.LegalEntities">Юридическое лицо</option>
             <option value="@ClientType.IndividualEntrepreneurs">Индивидуальный предприниматель</option>
         </select>
         <button type="submit" id="getClientsByTypeButton">Найти клиента</button>
     </form>
 
-    <form method="get" asp-action="GetClientByInn" asp-controller="Home">
+    <form method="get" action="@Url.Action("GetClientByInn", "Home")">
         <label for="Inn">Найти по ИНН:</label>
-        <input asp-for="inn" type="text" id="Inn" name="inn" />
+        <input type="text" id="Inn" name="inn" />
         <button type="submit" id="getClientByInnButton">Найти клиента</button>
     </form>
 }

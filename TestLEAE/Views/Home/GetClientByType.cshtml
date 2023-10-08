@@ -4,6 +4,7 @@
 
 
 @section Content {
+    @using TestLEAE.DataLayer;
     @using TestLEAE.ModelsView;
     @model IEnumerable<ClientView>
     
@@ -17,7 +18,10 @@
             <li class="card-text" id="client-inn">ИНН - @client.Inn</li>
             <li class="card-text" id="client-dateToAdd">Дата добавления - @client.DateToAdd</li>
             <li class="card-text" id="client-dateToUpdate">Дата обновления - @client.DateToUpdate</li>
-            <li><a method="get" class="card-text" asp-action="GetFounder" asp-controller="Home" id="getFounderLink">Учредители</a></li>
+             @if (client.Type == ClientType.LegalEntities)
+             {
+                    <li><a method="get" class="card-text" href="@Url.Action("GetFounder", "Home", client.Inn)" id="getFounderLink">Учредители</a></li>
+             }
         }
     </ul>
     }

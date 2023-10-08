@@ -1,8 +1,24 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
 
 @section Content {
-    
+    @using TestLEAE.ModelsView;
+    @model IEnumerable<FounderView>
+
+    <p>Учредители - @Model.First().InnClient</p>
+    @if (Model != null)
+    {
+        <ul class="card-body">
+            @foreach (FounderView client in @Model)
+            {
+                <li class="card-title" id="client-name">Имя - @client.Fio</li>
+                <li class="card-text" id="client-inn">ИНН - @client.Inn</li>
+                <li class="card-text" id="client-dateToAdd">Дата добавления - @client.DateToAdd</li>
+                <li class="card-text" id="client-dateToUpdate">Дата обновления - @client.DateToUpdate</li>
+            }
+        </ul>
+    }
 }

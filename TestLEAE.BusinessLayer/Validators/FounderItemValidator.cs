@@ -17,11 +17,11 @@ public class FounderItemValidator : AbstractValidator<Founder>
 
         RuleFor(founder => founder.DateToAdd)
             .NotEmpty()
-            .LessThanOrEqualTo(DateTime.Now);
+            .LessThanOrEqualTo(DateTime.Today);
 
         RuleFor(founder => founder.DateToUpdate)
             .NotEmpty()
-            .LessThanOrEqualTo(DateTime.Now);
+            .LessThanOrEqualTo(DateTime.Today);
     }
 }
 

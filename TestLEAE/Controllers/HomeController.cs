@@ -55,6 +55,7 @@ public class HomeController : Controller
     public async Task<IActionResult> GetClientByInn(
         long inn)
     {
+        Console.WriteLine(inn);
         var model = _mapper
             .Map<ClientView>(await _clientOperationsService
             .GetClientByInn(inn));
