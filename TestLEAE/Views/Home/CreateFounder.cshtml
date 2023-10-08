@@ -4,7 +4,24 @@
 
 
 @section Content {
+    @using TestLEAE.DataLayer;
+    @model TestLEAE.ModelsView.FounderView;
 
+    <p1>Добавить нового клиента</p1>
+
+    <form method="post" asp-action="CreateFounder" asp-controller="Home">
+
+        <label for="name">Имя:</label>
+        <input asp-for="name" type="text" id="name" name="name" />
+
+        <label for="inn">ИНН:</label>
+        <input asp-for="inn" type="text" id="inn" name="inn" />
+
+        <label for="inn">ИНН Юридического лица:</label>
+        <input asp-for="InnClient" type="text" id="InnClient" name="InnClient" />
+
+        <button type="submit" id="postClientsButton">Добавить клиента</button>
+    </form>
 }
 
 

@@ -4,6 +4,7 @@
 
 
 @section Content {
+    @using TestLEAE.DataLayer;
     @using TestLEAE.ModelsView;
     @model ClientView
     <p>Просмотр клиентов</p>
@@ -12,6 +13,9 @@
         <li class="card-text" id="client-inn">ИНН - @Model.Inn</li>
         <li class="card-text" id="client-dateToAdd">Дата добавления - @Model.DateToAdd</li>
         <li class="card-text" id="client-dateToUpdate">Дата обновления - @Model.DateToUpdate</li>
-        <li><a method="get" class="card-text" asp-action="GetFounder" asp-controller="Home" id="getFounderLink">Учредители</a></li>
+        @if (Model.Type == ClientType.LegalEntities)
+        {
+            <li><a method="get" class="card-text" asp-action="GetFounder" asp-controller="Home" id="getFounderLink">Учредители</a></li>
+        }
     </ul>
 }
