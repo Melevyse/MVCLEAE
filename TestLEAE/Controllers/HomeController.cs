@@ -33,36 +33,31 @@ public class HomeController : Controller
         return View();
     }
 
-    [HttpGet("ClientSearch")]
+    [HttpGet]
     public IActionResult ClientSearch()
     {
         return View();
     }
 
-    [HttpGet("GetClientByType")]
-    public IActionResult GetClientByType()
-    {
-        return View();
-    }
-
     // Get all Clients info by type
-    [HttpGet("GetClientByType/{type}")]
+    [HttpGet]
     public async Task<IActionResult> GetClientByType(
         ClientType type)
     {
-        var model = await _clientOperationsService
-            .GetClientsListByType(type);
-
+        var model = _mapper
+            .Map<List<ClientView>>(await _clientOperationsService
+            .GetClientsListByType(type));
         return View(model);
     }
 
     // Get Client info
-    [HttpGet("GetClientByInn/{inn}")]
+    [HttpGet]
     public async Task<IActionResult> GetClientByInn(
         long inn)
     {
-        var model = await _clientOperationsService
-            .GetClientByInn(inn);
+        var model = _mapper
+            .Map<ClientView>(await _clientOperationsService
+            .GetClientByInn(inn));
         return View(model);
     }
 
@@ -71,8 +66,9 @@ public class HomeController : Controller
     public async Task<IActionResult> GetFounder(
         long clientInn)
     {
-        var model = await _founderOperationsService
-            .GetFounderListByClientInn(clientInn);
+        var model = _mapper
+            .Map<FounderView>(await _founderOperationsService
+            .GetFounderListByClientInn(clientInn));
         return View(model);
     }
 

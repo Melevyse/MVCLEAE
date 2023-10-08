@@ -16,9 +16,10 @@ public class ValidationPrimitivesService : IValidationPrimitivesService
 
     public void BeValidInn(long inn)
     {
-        if (inn >= 1000000000 && inn <= 9999999999)
+        if (inn < 1000000000 || inn > 9999999999)
             throw new ArgumentException("Invalid inn value");
     }
+
 
     public void BeValidDateTime(DateTime date)
     {

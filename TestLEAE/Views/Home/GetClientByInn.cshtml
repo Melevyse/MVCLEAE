@@ -7,11 +7,6 @@
     @using TestLEAE.ModelsView;
     @model ClientView
     <p>Просмотр клиентов</p>
-    <form method="get" asp-action="GetClientByInn" asp-controller="Home">
-        <label for="clientInn">Найти по ИНН:</label>
-        <input asp-route-inn type="text" id="clientInn" name="inn" />
-        <button type="submit" id="getClientByInnButton">Найти клиента</button>
-    </form>
     <ul class="card-body">
         <li class="card-title" id="client-name">Имя - @Model.Name</li>
         <li class="card-text" id="client-inn">ИНН - @Model.Inn</li>

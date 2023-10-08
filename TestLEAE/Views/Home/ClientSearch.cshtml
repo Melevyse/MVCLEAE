@@ -4,13 +4,14 @@
 
 @section Content{
     @using TestLEAE.DataLayer;
+    @using TestLEAE;
     @model TestLEAE.ModelsView.ClientView
 
     <p1>Найти клиента</p1>
 
     <form method="get" asp-action="GetClientByType" asp-controller="Home">
         <label for="clientType">Найти по типу:</label>
-        <select asp-route-type id="clientType" name="type">
+        <select asp-for="type" id="clientType" name="type">
             <option value="@ClientType.LegalEntities">Юридическое лицо</option>
             <option value="@ClientType.IndividualEntrepreneurs">Индивидуальный предприниматель</option>
         </select>
@@ -19,7 +20,7 @@
 
     <form method="get" asp-action="GetClientByInn" asp-controller="Home">
         <label for="clientInn">Найти по ИНН:</label>
-        <input asp-route-inn type="text" id="clientInn" name="inn" />
+        <input asp-for="inn" type="text" id="clientInn" name="inn" />
         <button type="submit" id="getClientByInnButton">Найти клиента</button>
     </form>
 }
