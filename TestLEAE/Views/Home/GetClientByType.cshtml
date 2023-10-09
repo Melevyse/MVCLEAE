@@ -11,7 +11,7 @@
     <p>Просмотр клиентов</p>
     @if (Model != null)
     {
-    <ul class="card-body">
+        <ul class="card-body fade-in">
         @foreach (ClientView client in @Model)
         {
             <li class="card-title" id="client-name">Имя - @client.Name</li>

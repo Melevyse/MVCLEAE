@@ -7,20 +7,24 @@
     @using TestLEAE;
     @model TestLEAE.ModelsView.ClientView
 
-    <p1>Найти клиента</p1>
+    <h1 class="display-4">Найти клиента</h1>
 
-    <form method="get" action="@Url.Action("GetClientByType", "Home")">
-        <label for="clientType">Найти по типу:</label>
-        <select id="clientType" name="type">
-            <option value="@ClientType.LegalEntities">Юридическое лицо</option>
-            <option value="@ClientType.IndividualEntrepreneurs">Индивидуальный предприниматель</option>
-        </select>
-        <button type="submit" id="getClientsByTypeButton">Найти клиента</button>
+    <form method="get" action="@Url.Action("GetClientByType", "Home")" class="mb-4">
+        <div class="form-group">
+            <label for="clientType">Найти по типу:</label>
+            <select id="clientType" name="type" class="form-control">
+                <option value="@ClientType.LegalEntities">Юридическое лицо</option>
+                <option value="@ClientType.IndividualEntrepreneurs">Индивидуальный предприниматель</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-dark" id="getClientsByTypeButton">Найти клиента</button>
     </form>
 
     <form method="get" action="@Url.Action("GetClientByInn", "Home")">
-        <label for="Inn">Найти по ИНН:</label>
-        <input type="text" id="Inn" name="inn" />
-        <button type="submit" id="getClientByInnButton">Найти клиента</button>
+        <div class="form-group">
+            <label for="Inn">Найти по ИНН:</label>
+            <input type="text" id="Inn" name="inn" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-dark" id="getClientByInnButton">Найти клиента</button>
     </form>
 }

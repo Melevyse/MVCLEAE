@@ -27,16 +27,11 @@ public class ExceptionHandlingMiddleware
         catch (Exception ex)
         {
             _logger.LogError(ex, "error during executing {Context}", context.Request.Path.Value);
-            var response = context.Response;
-            response.ContentType = "application/json";
-
-            var (status, message) = GetResponse(ex);
-            response.StatusCode = (int)status;
-
-            await response.WriteAsync(message);
+            var code = GetResponse(ex);
+            context.Response.Redirect($"Error?code={(int)code}");
         }
     }
-    public (HttpStatusCode code, string message) GetResponse(Exception exception)
+    public HttpStatusCode GetResponse(Exception exception)
     {
         HttpStatusCode code;
         switch (exception)
@@ -53,6 +48,6 @@ public class ExceptionHandlingMiddleware
                 code = HttpStatusCode.InternalServerError;
                 break;
         }
-        return (code, JsonConvert.SerializeObject(new SimpleResponse(exception.Message)));
+        return code;
     }
 }

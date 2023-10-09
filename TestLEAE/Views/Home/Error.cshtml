@@ -1,18 +1,18 @@
 ﻿@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-
+@model int;
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf8" />
-    <title>Home page</title>
+    <title>Ошибка</title>
     <link href="~/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="~/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/error.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <div class="container">
-
+    <div class="container container-error">
+        <h1 class="text-danger">Ошибка @Model</h1>
+        <p>Произошла ошибка при обработке вашего запроса.</p>
+        <a asp-action="Index" asp-controller="Home" class="btn btn-dark">Вернуться на главную</a>
     </div>
-
-    <script src="~/js/bootstrap.min.js"></script>
 </body>
 </html>

@@ -102,4 +102,11 @@ public class HomeController : Controller
             .AddFounderAsync(mappingResource, founderView.InnClient);
         return View();
     }
+
+    [HttpGet]
+    public IActionResult Error(
+        int code)
+    {
+        return View(code);
+    }
 }
