@@ -2,24 +2,28 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
 @section Content {
     @using TestLEAE.DataLayer;
     @model TestLEAE.ModelsView.FounderView;
 
-    <p1>Добавить нового учредителя</p1>
+    <h1 class="display-4">Добавить нового учредителя</h1>
 
-    <form method="post" action="@Url.Action("CreateFounder", "Home")">
-            <label for="name">Имя:</label>
-            <input type="text" id="name" name="fio" />
+    <form method="post" action="@Url.Action("CreateFounder", "Home")" class="mb-4">
+        <div class="form-group personArea">
+            <label class="personArea" for="name">Имя:</label>
+            <input type="text" id="name" name="fio" class="form-control" />
+        </div>
 
-            <label for="inn">ИНН:</label>
-            <input type="text" id="inn" name="inn" />
+        <div class="form-group personArea">
+            <label class="personArea" for="inn">ИНН:</label>
+            <input type="number" id="inn" name="inn" class="form-control" />
+        </div>
 
-            <label for="inn">ИНН Юридического лица:</label>
-            <input type="text" id="innClient" name="innClient" />
-        <button type="submit" id="postClientsButton">Добавить</button>
+        <div class="form-group personArea">
+            <label class="personArea" for="inn">ИНН Юридического лица:</label>
+            <input type="number" id="innClient" name="innClient" class="form-control" />
+        </div>
+
+        <button type="submit" class="btn btn-dark" id="postClientsButton">Добавить</button>
     </form>
 }
-
-
