@@ -1,16 +1,18 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using FluentValidation;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Newtonsoft.Json;
-using System;
 using System.Net;
-
-namespace TestLEAE;
+using TestLEAE;
 
 public class ExceptionHandlingMiddleware
 {
     private readonly RequestDelegate _next;
     private readonly ILogger<ExceptionHandlingMiddleware> _logger;
 
-    public ExceptionHandlingMiddleware(RequestDelegate next, ILogger<ExceptionHandlingMiddleware> logger)
+    public ExceptionHandlingMiddleware(
+        RequestDelegate next, 
+        ILogger<ExceptionHandlingMiddleware> logger)
     {
         _next = next;
         _logger = logger;
@@ -30,6 +32,7 @@ public class ExceptionHandlingMiddleware
 
             var (status, message) = GetResponse(ex);
             response.StatusCode = (int)status;
+
             await response.WriteAsync(message);
         }
     }
@@ -42,7 +45,8 @@ public class ExceptionHandlingMiddleware
                 code = HttpStatusCode.NotFound;
                 break;
             case ArgumentException
-                or InvalidOperationException:
+                or InvalidOperationException
+                or ValidationException:
                 code = HttpStatusCode.BadRequest;
                 break;
             default:

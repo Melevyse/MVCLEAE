@@ -16,11 +16,13 @@
         {
             <li class="card-title" id="client-name">Имя - @client.Name</li>
             <li class="card-text" id="client-inn">ИНН - @client.Inn</li>
-            <li class="card-text" id="client-dateToAdd">Дата добавления - @client.DateToAdd</li>
-            <li class="card-text" id="client-dateToUpdate">Дата обновления - @client.DateToUpdate</li>
+            <li class="card-text" id="client-dateToAdd">Дата добавления - @client.DateToAdd.ToString("dd.MM.yyyy")</li>
+            <li class="card-text" id="client-dateToUpdate">Дата обновления - @client.DateToUpdate.ToString("dd.MM.yyyy")</li>
              @if (client.Type == ClientType.LegalEntities)
              {
-                    <li><a method="get" class="card-text" href="@Url.Action("GetFounder", "Home", client.Inn)" id="getFounderLink">Учредители</a></li>
+                    <li>
+                        <a method="get" class="card-text" href="@Url.Action("GetFounder", "Home", new { clientInn = client.Inn })" id="getFounderLink">Учредители</a>
+                    </li>
              }
         }
     </ul>

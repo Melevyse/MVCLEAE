@@ -68,7 +68,7 @@ public class HomeController : Controller
         long clientInn)
     {
         var model = _mapper
-            .Map<FounderView>(await _founderOperationsService
+            .Map<List<FounderView>>(await _founderOperationsService
             .GetFounderListByClientInn(clientInn));
         return View(model);
     }
@@ -85,7 +85,7 @@ public class HomeController : Controller
         var mappingResource = _mapper.Map<Client>(clientView);
         await _clientOperationsService
             .AddClientAsync(mappingResource);
-        return RedirectToAction("CreateClient");
+        return View();
     }
 
     [HttpGet]
@@ -100,6 +100,6 @@ public class HomeController : Controller
         var mappingResource = _mapper.Map<Founder>(founderView);
         await _founderOperationsService
             .AddFounderAsync(mappingResource, founderView.InnClient);
-        return RedirectToAction("CreateFounder");
+        return View();
     }
 }

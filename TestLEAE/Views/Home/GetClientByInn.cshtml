@@ -12,11 +12,11 @@
     <ul class="card-body fade-in">
         <li class="card-title" id="client-name">Имя - @Model.Name</li>
         <li class="card-text" id="client-inn">ИНН - @Model.Inn</li>
-        <li class="card-text" id="client-dateToAdd">Дата добавления - @Model.DateToAdd</li>
-        <li class="card-text" id="client-dateToUpdate">Дата обновления - @Model.DateToUpdate</li>
+        <li class="card-text" id="client-dateToAdd">Дата добавления - @Model.DateToAdd.ToString("dd.MM.yyyy")</li>
+        <li class="card-text" id="client-dateToUpdate">Дата обновления - @Model.DateToUpdate.ToString("dd.MM.yyyy")</li>
         @if (Model.Type == ClientType.LegalEntities)
         {
-            <li><a method="get" class="card-text" href="@Url.Action("GetFounder", "Home", @Model.Inn)" id="getFounderLink">Учредители</a></li>
+            <li><a method="get" class="card-text" href="@Url.Action("GetFounder", "Home")" id="getFounderLink">Учредители</a></li>
         }
     </ul>
 }

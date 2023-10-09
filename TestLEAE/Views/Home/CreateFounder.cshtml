@@ -11,13 +11,13 @@
 
     <form method="post" action="@Url.Action("CreateFounder", "Home")">
             <label for="name">Имя:</label>
-            <input type="text" id="name" name="name" />
+            <input type="text" id="name" name="fio" />
 
             <label for="inn">ИНН:</label>
             <input type="text" id="inn" name="inn" />
 
             <label for="inn">ИНН Юридического лица:</label>
-            <input type="text" id="InnClient" name="InnClient" />
+            <input type="text" id="innClient" name="innClient" />
         <button type="submit" id="postClientsButton">Добавить</button>
     </form>
 }

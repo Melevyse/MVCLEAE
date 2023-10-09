@@ -44,11 +44,11 @@ public class FounderOperationsRepository : IFounderOperationsRepository
     {
         var client = await _context.Clients
         .AsNoTracking()
-        .FirstOrDefaultAsync(x => x.Inn == innClient);
+        .FirstOrDefaultAsync(x => x.Inn == innClient && 
+                             x.Type == ClientType.LegalEntities);
         if (client != null)
         {
             founder.IdClient = client.Id;
-            founder.Client = client;
             await _context.Founders.AddAsync(founder);
             await _context.SaveChangesAsync();
         }
