@@ -9,7 +9,7 @@ public class SqlReportingContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Database=dbleae;Trusted_Connection=True;");
+        optionsBuilder.UseSqlServer();
     }
 
     public async void Migrate()

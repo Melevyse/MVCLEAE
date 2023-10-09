@@ -10,7 +10,7 @@
     <h1 class="display-4">Найти клиента</h1>
 
     <form method="get" action="@Url.Action("GetClientByType", "Home")" class="mb-4">
-        <div class="form-group personArea">
+        <div class="form-group personArea col-md-6">
             <label class="personArea" for="clientType">Найти по типу:</label>
             <select id="clientType" name="type" class="form-control">
                 <option value="@ClientType.LegalEntities">Юридическое лицо</option>
@@ -20,11 +20,12 @@
         <button type="submit" class="btn btn-dark" id="getClientsByTypeButton">Найти клиента</button>
     </form>
 
-    <form method="get" action="@Url.Action("GetClientByInn", "Home")">
-        <div class="form-group personArea">
+    <form method="get" action="@Url.Action("GetClientByInn", "Home")" class="mb-4">
+        <div class="form-group personArea col-md-6">
             <label class="personArea" for="Inn">Найти по ИНН:</label>
             <input type="number" id="Inn" name="inn" class="form-control" />
         </div>
         <button type="submit" class="btn btn-dark" id="getClientByInnButton">Найти клиента</button>
     </form>
 }
+

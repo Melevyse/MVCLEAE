@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using Microsoft.Extensions.Logging;
 using TestLEAE.DataLayer;
 
 namespace TestLEAE.BusinessLayer;
@@ -7,19 +6,16 @@ namespace TestLEAE.BusinessLayer;
 public class FounderOperationsService : IFounderOperationsService
 {
     private readonly IFounderOperationsRepository _founderOperationsRepository;
-    private readonly ILogger<FounderOperationsService> _logger;
     private readonly IValidator<Founder> _validator;
     private readonly IValidationPrimitivesService _validationPrimitivesService;
 
     public FounderOperationsService(
         IFounderOperationsRepository founderOperationsRepository,
-        ILogger<FounderOperationsService> logger,
         IValidator<Founder> validator,
         IValidationPrimitivesService validationPrimitivesService
         )
     {
         _founderOperationsRepository = founderOperationsRepository;
-        _logger = logger;
         _validator = validator;
         _validationPrimitivesService = validationPrimitivesService;
     }

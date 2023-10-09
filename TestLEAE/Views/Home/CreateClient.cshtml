@@ -9,17 +9,17 @@
     <h1 class="display-4">Добавить нового клиента</h1>
 
     <form method="post" action="@Url.Action("CreateClient", "Home")" class="mb-4">
-        <div class="form-group personArea">
+        <div class="form-group personArea col-md-6">
             <label class="personArea" for="name">Имя:</label>
             <input type="text" id="name" name="name" class="form-control" />
         </div>
 
-        <div class="form-group personArea">
+        <div class="form-group personArea col-md-6">
             <label class="personArea" for="inn">ИНН:</label>
             <input type="number" id="inn" name="inn" class="form-control" />
         </div>
 
-        <div class="form-group personArea">
+        <div class="form-group personArea col-md-6">
             <label class="personArea" for="clientType">Тип клиента:</label>
             <select id="clientType" name="type" class="form-control">
                 <option value="@ClientType.LegalEntities">Юридическое лицо</option>
@@ -30,3 +30,4 @@
         <button type="submit" class="btn btn-dark" id="postClientsButton">Добавить</button>
     </form>
 }
+

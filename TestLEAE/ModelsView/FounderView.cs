@@ -1,6 +1,4 @@
-﻿using TestLEAE.DataLayer;
-
-namespace TestLEAE.ModelsView
+﻿namespace TestLEAE.ModelsView
 {
     public class FounderView
     {

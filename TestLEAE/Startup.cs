@@ -1,7 +1,5 @@
 ﻿using FluentValidation;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using System;
 using TestLEAE.BusinessLayer;
 using TestLEAE.DataLayer;
 
@@ -18,7 +16,7 @@ namespace TestLEAE
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<SqlReportingContext>(options =>
-            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(Configuration.GetConnectionString("SqlReportingContext")));
             services.AddScoped<IClientOperationsService, ClientOperationsService>();
             services.AddScoped<IFounderOperationsService, FounderOperationsService>();
             services.AddScoped<IClientOperationsRepository, ClientOperationsRepository>();
@@ -27,8 +25,6 @@ namespace TestLEAE
             services.AddTransient<IValidationPrimitivesService, ValidationPrimitivesService>();
             services.AddTransient<IValidator<Client>, ClientItemValidator>();
             services.AddTransient<IValidator<Founder>, FounderItemValidator>();
-
-            services.AddValidatorsFromAssemblyContaining<Startup>();
 
             services.AddLogging((builder => builder.AddConsole()));
             services.AddMvc();

@@ -1,9 +1,5 @@
 ﻿using FluentValidation;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ViewFeatures;
-using Newtonsoft.Json;
 using System.Net;
-using TestLEAE;
 
 public class ExceptionHandlingMiddleware
 {

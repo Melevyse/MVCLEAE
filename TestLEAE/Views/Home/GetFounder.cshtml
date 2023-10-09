@@ -8,17 +8,23 @@
     @using TestLEAE.ModelsView;
     @model IEnumerable<FounderView>
 
-    <p>Учредители</p>
+    <h1 class="display-4">Учредители</h1>
     @if (Model != null)
     {
-        <ul class="card-body fade-in">
+        <div class="row mt-5 mb-5">
             @foreach (FounderView client in @Model)
             {
-                <li class="card-title" id="client-name">Имя - @client.Fio</li>
-                <li class="card-text" id="client-inn">ИНН - @client.Inn</li>
-                <li class="card-text" id="client-dateToAdd">Дата добавления - @client.DateToAdd.ToString("dd.MM.yyyy")</li>
-                <li class="card-text" id="client-dateToUpdate">Дата обновления - @client.DateToUpdate.ToString("dd.MM.yyyy")</li>
+                <div class="col-md-6 col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-body fade-in content-card">
+                            <h5 class="card-title" id="founder-name">Имя - @client.Fio</h5>
+                            <p class="card-text" id="founder-inn">ИНН - @client.Inn</p>
+                            <p class="card-text" id="founder-dateToAdd">Дата добавления - @client.DateToAdd.ToString("dd.MM.yyyy")</p>
+                            <p class="card-text" id="founder-dateToUpdate">Дата обновления - @client.DateToUpdate.ToString("dd.MM.yyyy")</p>
+                        </div>
+                    </div>
+                </div>
             }
-        </ul>
+        </div>
     }
 }

@@ -1,19 +1,15 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 
 namespace TestLEAE.DataLayer;
 
 public class ClientOperationsRepository : IClientOperationsRepository
 {
     private readonly SqlReportingContext _context;
-    private readonly ILogger<ClientOperationsRepository> _logger;
 
     public ClientOperationsRepository(
-        SqlReportingContext context,
-        ILogger<ClientOperationsRepository> logger) 
+        SqlReportingContext context) 
     {
         _context = context;
-        _logger = logger;
     }
 
     public async Task<List<Client>> GetAllClientsByTypeDb(

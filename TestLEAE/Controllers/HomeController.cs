@@ -1,7 +1,5 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using TestLEAE.BusinessLayer;
 using TestLEAE.DataLayer;
 using TestLEAE.ModelsView;
@@ -10,17 +8,14 @@ namespace TestLEAE.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
     private readonly IClientOperationsService _clientOperationsService;
     private readonly IFounderOperationsService _founderOperationsService;
     private readonly IMapper _mapper;
     public HomeController(
-        ILogger<HomeController> logger,
         IClientOperationsService clientOperationsService,
         IFounderOperationsService founderOperationsService,
         IMapper mapper)
     {
-        _logger = logger;
         _clientOperationsService = clientOperationsService;
         _founderOperationsService = founderOperationsService;
         _mapper = mapper;

@@ -5,6 +5,6 @@ public class SimpleResponse
 
     public SimpleResponse(string message)
     {
-            Message = message;
+        Message = message;
     }
 }

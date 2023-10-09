@@ -7,25 +7,31 @@
     @using TestLEAE.DataLayer;
     @using TestLEAE.ModelsView;
     @model IEnumerable<ClientView>
-    
-    <p>Просмотр клиентов</p>
+
+    <h1 class="display-4">Просмотр клиентов</h1>
     @if (Model != null)
     {
-        <ul class="card-body fade-in">
-        @foreach (ClientView client in @Model)
-        {
-            <li class="card-title" id="client-name">Имя - @client.Name</li>
-            <li class="card-text" id="client-inn">ИНН - @client.Inn</li>
-            <li class="card-text" id="client-dateToAdd">Дата добавления - @client.DateToAdd.ToString("dd.MM.yyyy")</li>
-            <li class="card-text" id="client-dateToUpdate">Дата обновления - @client.DateToUpdate.ToString("dd.MM.yyyy")</li>
-             @if (client.Type == ClientType.LegalEntities)
-             {
-                    <li>
-                        <a method="get" class="card-text" href="@Url.Action("GetFounder", "Home", new { clientInn = client.Inn })" id="getFounderLink">Учредители</a>
-                    </li>
-             }
-        }
-    </ul>
+        <div class="row mt-5 mb-5">
+         @foreach (ClientView client in @Model)
+         {
+            <div class="col-md-6 col-lg-4">
+                <div class="card mb-4">
+                    <div class="card-body fade-in content-card">
+                        <h5 class="card-title" id="client-name">Имя - @client.Name</h5>
+                        <p class="card-text" id="client-inn">ИНН - @client.Inn</p>
+                        <p class="card-text" id="client-dateToAdd">Дата добавления - @client.DateToAdd.ToString("dd.MM.yyyy")</p>
+                        <p class="card-text" id="client-dateToUpdate">Дата обновления - @client.DateToUpdate.ToString("dd.MM.yyyy")</p>
+                         @if (client.Type == ClientType.LegalEntities)
+                         {
+                         <p>
+                            <a method="get" class="card-text color-dynamic" href="@Url.Action("GetFounder", "Home", new { clientInn = client.Inn })" id="getFounderLink">Учредители</a>
+                         </p>
+                         }
+                    </div>
+                </div>
+            </div>
+         }
+        </div>
     }
 }
 
