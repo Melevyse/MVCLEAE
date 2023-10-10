@@ -5,9 +5,7 @@
 @section Content {
     @using TestLEAE.DataLayer;
     @model TestLEAE.ModelsView.ClientView
-
     <h1 class="display-4">Добавить нового клиента</h1>
-
     <form method="post" action="@Url.Action("CreateClient", "Home")" class="mb-4">
         <div class="form-group personArea col-md-6">
             <label class="personArea" for="name">Имя:</label>
@@ -26,7 +24,6 @@
                 <option value="@ClientType.IndividualEntrepreneurs">Индивидуальный предприниматель</option>
             </select>
         </div>
-
         <button type="submit" class="btn btn-dark" id="postClientsButton">Добавить</button>
     </form>
 }

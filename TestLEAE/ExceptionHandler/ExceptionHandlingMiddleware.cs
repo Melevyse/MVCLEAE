@@ -22,8 +22,8 @@ public class ExceptionHandlingMiddleware
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "error during executing {Context}", context.Request.Path.Value);
             var code = GetResponse(ex);
+            _logger.LogError(ex, "error during executing {Context}", context.Request.Path.Value);
             context.Response.Redirect($"Error?code={(int)code}");
         }
     }
