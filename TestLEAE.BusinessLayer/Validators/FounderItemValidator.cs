@@ -13,7 +13,7 @@ public class FounderItemValidator : AbstractValidator<Founder>
 
         RuleFor(founder => founder.Fio)
             .NotEmpty()
-            .Length(2, 45);
+            .Matches(@"^[A-ZА-ЯЁ][a-zA-Zа-яёА-ЯЁ]+\s[A-ZА-ЯЁ][a-zA-Zа-яёА-ЯЁ]+\s[A-ZА-ЯЁ][a-zA-Zа-яёА-ЯЁ]+$");
 
         RuleFor(founder => founder.DateToAdd)
             .NotEmpty()

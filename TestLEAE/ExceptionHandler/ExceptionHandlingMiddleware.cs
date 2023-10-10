@@ -1,6 +1,8 @@
 ﻿using FluentValidation;
+using Microsoft.Data.SqlClient;
 using System.Net;
 
+namespace TestLEAE;
 public class ExceptionHandlingMiddleware
 {
     private readonly RequestDelegate _next;
