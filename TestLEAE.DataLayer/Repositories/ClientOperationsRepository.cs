@@ -32,7 +32,6 @@ public class ClientOperationsRepository : IClientOperationsRepository
         return client ?? throw new ArgumentException("No client found in the database.");
     }
 
-
     public async Task AddClientAsyncDb(
         Client client)
     {
