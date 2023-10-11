@@ -22,7 +22,6 @@ public class HomeController : Controller
     }
 
     [HttpGet]
-    // Default page
     public IActionResult Index()
     {
         return View();
@@ -34,7 +33,6 @@ public class HomeController : Controller
         return View();
     }
 
-    // Get all Clients info by type
     [HttpGet]
     public async Task<IActionResult> GetClientByType(
         ClientType type)
@@ -45,7 +43,6 @@ public class HomeController : Controller
         return View(model);
     }
 
-    // Get Client info
     [HttpGet]
     public async Task<IActionResult> GetClientByInn(
         long inn)
@@ -57,7 +54,6 @@ public class HomeController : Controller
         return View(model);
     }
 
-    // Get all Founders of the selected Client
     [HttpGet]
     public async Task<IActionResult> GetFounder(
         long clientInn)
@@ -72,7 +68,6 @@ public class HomeController : Controller
     public IActionResult CreateClient()
         => View();
 
-    // Add Client
     [HttpPost]
     public async Task<IActionResult> CreateClient(
         ClientView clientView)
@@ -87,7 +82,6 @@ public class HomeController : Controller
     public IActionResult CreateFounder()
         => View();
 
-    // Add Founder for Client
     [HttpPost]
     public async Task<IActionResult> CreateFounder(
         FounderView founderView) 
